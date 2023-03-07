@@ -33,7 +33,7 @@ class DashboardScreen extends StatelessWidget {
               ),
             ),
             Positioned(
-              bottom: 40,
+              bottom: 80,
               right: 0,
               child: Container(
                 height: 200,
@@ -47,7 +47,7 @@ class DashboardScreen extends StatelessWidget {
             Positioned(
               bottom: 0,
               child: Container(
-                height: 200,
+                height: 250,
                 width: sizeY,
                 decoration: BoxDecoration(
                     gradient: LinearGradient(
