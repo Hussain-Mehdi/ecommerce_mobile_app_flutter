@@ -14,20 +14,32 @@ class DashboardScreen extends StatelessWidget {
         child: Stack(
           children: [
             Container(
-              margin: EdgeInsets.only(left: 20),
               decoration: BoxDecoration(
                   image: DecorationImage(
                       fit: BoxFit.cover,
                       image: AssetImage("./images/men.jpg"))),
             ),
             Positioned(
-              bottom: 50,
+              child: Container(
+                height: sizeX,
+                width: sizeY,
+                decoration: BoxDecoration(
+                    gradient: LinearGradient(colors: [
+                      Color.fromARGB(94, 125, 90, 152),
+                      Color.fromARGB(172, 60, 46, 72),
+                    ]),
+                    borderRadius:
+                        BorderRadius.only(topLeft: Radius.circular(50))),
+              ),
+            ),
+            Positioned(
+              bottom: 40,
               right: 0,
               child: Container(
                 height: 200,
                 width: 200,
                 decoration: BoxDecoration(
-                    color: Colors.amber,
+                    color: Color.fromARGB(148, 255, 193, 7),
                     borderRadius:
                         BorderRadius.only(topLeft: Radius.circular(50))),
               ),
@@ -51,11 +63,22 @@ class DashboardScreen extends StatelessWidget {
                 child: Column(
                   children: [
                     Padding(
-                      padding: EdgeInsets.only(top: 20),
+                      padding: const EdgeInsets.only(top: 18.0),
+                      child: Text(
+                        "MyShop",
+                        style: TextStyle(
+                          fontSize: 25,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(top: 15),
                       child: SizedBox(
                         width: 240,
                         child: Text(
-                          "The Touch of Modern app can help. The tool offers everything from clothing, watches and barware to beef jerky and artwork. It’s virtually a one-stop shop for modern man gifting.",
+                          "The tool offers everything from clothing, watches and barware to beef jerky and artwork. ",
                           style: TextStyle(
                             textBaseline: TextBaseline.alphabetic,
                             color: Colors.white,
@@ -65,7 +88,7 @@ class DashboardScreen extends StatelessWidget {
                     ),
                     Container(
                       margin: EdgeInsets.only(top: 20),
-                      height: 55,
+                      height: 50,
                       width: 250,
                       decoration: BoxDecoration(
                           color: Colors.amber,
