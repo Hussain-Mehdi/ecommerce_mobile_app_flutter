@@ -17,7 +17,7 @@ class _HomeScreenState extends State<HomeScreen> {
     TextEditingController pinCode = TextEditingController();
     bool workingField = true;
     return Material(
-        color: Color.fromARGB(255, 235, 235, 235),
+        color: Color(0xfff3f3f3),
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           Container(
             height: 180,
@@ -142,13 +142,26 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(left: 15.0, top: 20, bottom: 10),
-            child: Text(
-              "Catalogue",
-              style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 18,
-                  color: Colors.black87),
+            padding: const EdgeInsets.only(
+                left: 15.0, top: 20, bottom: 10, right: 15),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  "Catalogue",
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 18,
+                      color: Colors.black87),
+                ),
+                Text(
+                  "See all",
+                  style: TextStyle(
+                      fontWeight: FontWeight.w500,
+                      fontSize: 12,
+                      color: Color.fromARGB(221, 109, 109, 109)),
+                ),
+              ],
             ),
           ),
           Container(
@@ -192,7 +205,10 @@ class _HomeScreenState extends State<HomeScreen> {
     return GridView.builder(
       itemCount: featuredData.length,
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          mainAxisSpacing: 60, crossAxisCount: 2),
+          childAspectRatio: MediaQuery.of(context).size.width /
+              (MediaQuery.of(context).size.height / 1),
+          mainAxisSpacing: 60,
+          crossAxisCount: 2),
       itemBuilder: (context, index) {
         return Padding(
           padding: const EdgeInsets.only(left: 20.0),
