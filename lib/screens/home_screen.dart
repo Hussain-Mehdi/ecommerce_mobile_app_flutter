@@ -8,6 +8,8 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  bool likePressed = false;
+
   @override
   Widget build(BuildContext context) {
     double sizeX = MediaQuery.of(context).size.height;
@@ -164,77 +166,202 @@ class _HomeScreenState extends State<HomeScreen> {
                   color: Colors.black87),
             ),
           ),
-          Container(height: 290, child: createFeaturedItems())
+          Padding(
+            padding: const EdgeInsets.only(left: 12.0),
+            child: Container(
+              width: 140,
+              height: 230,
+              decoration: BoxDecoration(
+                  color: Colors.white, borderRadius: BorderRadius.circular(15)),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Stack(children: [
+                    Container(
+                      width: MediaQuery.of(context).size.width,
+                      height: 140,
+                      decoration: BoxDecoration(
+                          color: Colors.amber,
+                          borderRadius: BorderRadius.circular(15),
+                          image: DecorationImage(
+                              image: AssetImage('./images/3.png'))),
+                    ),
+                    Container(
+                      height: 140,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(15),
+                        gradient: LinearGradient(colors: [
+                          Color.fromARGB(94, 125, 90, 152),
+                          Color.fromARGB(172, 60, 46, 72),
+                        ]),
+                      ),
+                      child: Center(
+                        child: Text(
+                          "catalogueData[index + 7]",
+                          style: TextStyle(
+                              color: Color.fromARGB(255, 255, 255, 255),
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                    ),
+                    CircleAvatar(
+                      backgroundColor: Colors.white,
+                      child: IconButton(
+                          onPressed: () {
+                            if (likePressed) {
+                              likePressed = false;
+                            } else {
+                              likePressed = true;
+                            }
+                          },
+                          icon: likePressed
+                              ? ImageIcon(AssetImage("./images/heart.png"))
+                              : ImageIcon(
+                                  AssetImage("./images/heartfill.png"))),
+                    )
+                  ]),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      IconButton(
+                          padding: EdgeInsets.all(0),
+                          constraints: BoxConstraints(),
+                          onPressed: () {},
+                          icon: Icon(Icons.star_outline, size: 15)),
+                      IconButton(
+                          padding: EdgeInsets.all(0),
+                          constraints: BoxConstraints(),
+                          onPressed: () {},
+                          icon: Icon(Icons.star_outline, size: 15)),
+                      IconButton(
+                          padding: EdgeInsets.all(0),
+                          constraints: BoxConstraints(),
+                          onPressed: () {},
+                          icon: Icon(Icons.star_outline, size: 15)),
+                      IconButton(
+                          padding: EdgeInsets.all(0),
+                          constraints: BoxConstraints(),
+                          onPressed: () {},
+                          icon: Icon(Icons.star_outline, size: 15)),
+                    ],
+                  ),
+                  Container(
+                      margin: EdgeInsets.only(left: 10, right: 10),
+                      width: 130,
+                      height: 30,
+                      child: Text(
+                          "A quick brown clever fox jumps over the lazy dog",
+                          style: TextStyle(
+                              fontSize: 12, overflow: TextOverflow.fade))),
+                  Container(
+                      margin: EdgeInsets.only(left: 10, right: 10),
+                      width: 130,
+                      child: Text("\$120.00",
+                          style: TextStyle(
+                              fontSize: 16, fontWeight: FontWeight.w800))),
+                ],
+              ),
+            ),
+          )
+          //  Container(height: 290, child: createFeaturedItems())
         ]));
   }
 
-  Widget createFeaturedItems() {
-    List<Widget> catalogues = [];
-    List<String> catalogueData = [
-      './images/1.png',
-      './images/2.png',
-      './images/3.png',
-      './images/4.png',
-      './images/5.png',
-      './images/6.png',
-      './images/7.png',
-      'Cloths',
-      'Shoes',
-      'Watch',
-      'Jackets',
-      'Shites',
-      "Glasses",
-      'whats'
-    ];
+  // Widget createFeaturedItems() {
+  //   List<Widget> catalogues = [];
+  //   List<String> catalogueData = [
+  //     './images/1.png',
+  //     './images/2.png',
+  //     './images/3.png',
+  //     './images/4.png',
+  //     './images/5.png',
+  //     './images/6.png',
+  //     './images/7.png',
+  //     'Cloths',
+  //     'Shoes',
+  //     'Watch',
+  //     'Jackets',
+  //     'Shites',
+  //     "Glasses",
+  //     'whats'
+  //   ];
 
-    return GridView.builder(
-      itemCount: 6,
-      gridDelegate:
-          SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
-      itemBuilder: (context, index) {
-        return Padding(
-          padding: const EdgeInsets.only(left: 12.0),
-          child: Container(
-            width: 100,
-            height: 100,
-            decoration: BoxDecoration(borderRadius: BorderRadius.circular(15)),
-            child: Column(
-              children: [
-                Stack(children: [
-                  Container(
-                    width: 100,
-                    height: 100,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(15),
-                        image: DecorationImage(
-                            image: AssetImage(catalogueData[index]))),
-                  ),
-                  Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(15),
-                      gradient: LinearGradient(colors: [
-                        Color.fromARGB(94, 125, 90, 152),
-                        Color.fromARGB(172, 60, 46, 72),
-                      ]),
-                    ),
-                    child: Center(
-                      child: Text(
-                        catalogueData[index + 7],
-                        style: TextStyle(
-                            color: Color.fromARGB(255, 255, 255, 255),
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold),
-                      ),
-                    ),
-                  )
-                ]),
-              ],
-            ),
-          ),
-        );
-      },
-    );
-  }
+  //   return GridView.builder(
+  //     itemCount: 1,
+  //     gridDelegate:
+  //         SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
+  //     itemBuilder: (context, index) {
+  //       return Padding(
+  //         padding: const EdgeInsets.only(left: 12.0),
+  //         child: Container(
+  //           width: 90,
+  //           height: 160,
+  //           decoration: BoxDecoration(
+  //               color: Colors.white, borderRadius: BorderRadius.circular(15)),
+  //           child: Column(
+  //             children: [
+  //               Stack(children: [
+  //                 Container(
+  //                   width: MediaQuery.of(context).size.width,
+  //                   height: 140,
+  //                   decoration: BoxDecoration(
+  //                       color: Colors.amber,
+  //                       borderRadius: BorderRadius.circular(15),
+  //                       image: DecorationImage(
+  //                           image: AssetImage(catalogueData[index]))),
+  //                 ),
+  //                 Container(
+  //                   decoration: BoxDecoration(
+  //                     borderRadius: BorderRadius.circular(15),
+  //                     gradient: LinearGradient(colors: [
+  //                       Color.fromARGB(94, 125, 90, 152),
+  //                       Color.fromARGB(172, 60, 46, 72),
+  //                     ]),
+  //                   ),
+  //                   child: Center(
+  //                     child: Text(
+  //                       catalogueData[index + 7],
+  //                       style: TextStyle(
+  //                           color: Color.fromARGB(255, 255, 255, 255),
+  //                           fontSize: 18,
+  //                           fontWeight: FontWeight.bold),
+  //                     ),
+  //                   ),
+  //                 )
+  //               ]),
+  //               Row(
+  //                 mainAxisAlignment: MainAxisAlignment.start,
+  //                 children: [
+  //                   IconButton(
+  //                       padding: EdgeInsets.all(0),
+  //                       constraints: BoxConstraints(),
+  //                       onPressed: () {},
+  //                       icon: Icon(Icons.star_outline, size: 15)),
+  //                   IconButton(
+  //                       padding: EdgeInsets.all(0),
+  //                       constraints: BoxConstraints(),
+  //                       onPressed: () {},
+  //                       icon: Icon(Icons.star_outline, size: 15)),
+  //                   IconButton(
+  //                       padding: EdgeInsets.all(0),
+  //                       constraints: BoxConstraints(),
+  //                       onPressed: () {},
+  //                       icon: Icon(Icons.star_outline, size: 15)),
+  //                   IconButton(
+  //                       padding: EdgeInsets.all(0),
+  //                       constraints: BoxConstraints(),
+  //                       onPressed: () {},
+  //                       icon: Icon(Icons.star_outline, size: 15)),
+  //                 ],
+  //               )
+  //             ],
+  //           ),
+  //         ),
+  //       );
+  //     },
+  //   );
+  // }
 
   List<Widget> createCatalogue() {
     List<Widget> catalogues = [];
