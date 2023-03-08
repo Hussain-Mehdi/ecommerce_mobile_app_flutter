@@ -166,206 +166,13 @@ class _HomeScreenState extends State<HomeScreen> {
                   color: Colors.black87),
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.only(left: 12.0),
-            child: Container(
-              width: 140,
-              height: 230,
-              decoration: BoxDecoration(
-                  color: Colors.white, borderRadius: BorderRadius.circular(15)),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Stack(children: [
-                    Container(
-                      width: MediaQuery.of(context).size.width,
-                      height: 140,
-                      decoration: BoxDecoration(
-                          color: Colors.amber,
-                          borderRadius: BorderRadius.circular(15),
-                          image: DecorationImage(
-                              image: AssetImage('./images/3.png'))),
-                    ),
-                    Container(
-                      height: 140,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(15),
-                        gradient: LinearGradient(colors: [
-                          Color.fromARGB(94, 125, 90, 152),
-                          Color.fromARGB(172, 60, 46, 72),
-                        ]),
-                      ),
-                      child: Center(
-                        child: Text(
-                          "catalogueData[index + 7]",
-                          style: TextStyle(
-                              color: Color.fromARGB(255, 255, 255, 255),
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold),
-                        ),
-                      ),
-                    ),
-                    CircleAvatar(
-                      backgroundColor: Colors.white,
-                      child: IconButton(
-                          onPressed: () {
-                            if (likePressed) {
-                              likePressed = false;
-                            } else {
-                              likePressed = true;
-                            }
-                          },
-                          icon: likePressed
-                              ? ImageIcon(AssetImage("./images/heart.png"))
-                              : ImageIcon(
-                                  AssetImage("./images/heartfill.png"))),
-                    )
-                  ]),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      IconButton(
-                          padding: EdgeInsets.all(0),
-                          constraints: BoxConstraints(),
-                          onPressed: () {},
-                          icon: Icon(Icons.star_outline, size: 15)),
-                      IconButton(
-                          padding: EdgeInsets.all(0),
-                          constraints: BoxConstraints(),
-                          onPressed: () {},
-                          icon: Icon(Icons.star_outline, size: 15)),
-                      IconButton(
-                          padding: EdgeInsets.all(0),
-                          constraints: BoxConstraints(),
-                          onPressed: () {},
-                          icon: Icon(Icons.star_outline, size: 15)),
-                      IconButton(
-                          padding: EdgeInsets.all(0),
-                          constraints: BoxConstraints(),
-                          onPressed: () {},
-                          icon: Icon(Icons.star_outline, size: 15)),
-                    ],
-                  ),
-                  Container(
-                      margin: EdgeInsets.only(left: 10, right: 10),
-                      width: 130,
-                      height: 30,
-                      child: Text(
-                          "A quick brown clever fox jumps over the lazy dog",
-                          style: TextStyle(
-                              fontSize: 12, overflow: TextOverflow.fade))),
-                  Container(
-                      margin: EdgeInsets.only(left: 10, right: 10),
-                      width: 130,
-                      child: Text("\$120.00",
-                          style: TextStyle(
-                              fontSize: 16, fontWeight: FontWeight.w800))),
-                ],
-              ),
-            ),
-          )
-          //  Container(height: 290, child: createFeaturedItems())
+          Expanded(child: Container(child: createFeaturedItems()))
         ]));
   }
 
-  // Widget createFeaturedItems() {
-  //   List<Widget> catalogues = [];
-  //   List<String> catalogueData = [
-  //     './images/1.png',
-  //     './images/2.png',
-  //     './images/3.png',
-  //     './images/4.png',
-  //     './images/5.png',
-  //     './images/6.png',
-  //     './images/7.png',
-  //     'Cloths',
-  //     'Shoes',
-  //     'Watch',
-  //     'Jackets',
-  //     'Shites',
-  //     "Glasses",
-  //     'whats'
-  //   ];
-
-  //   return GridView.builder(
-  //     itemCount: 1,
-  //     gridDelegate:
-  //         SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
-  //     itemBuilder: (context, index) {
-  //       return Padding(
-  //         padding: const EdgeInsets.only(left: 12.0),
-  //         child: Container(
-  //           width: 90,
-  //           height: 160,
-  //           decoration: BoxDecoration(
-  //               color: Colors.white, borderRadius: BorderRadius.circular(15)),
-  //           child: Column(
-  //             children: [
-  //               Stack(children: [
-  //                 Container(
-  //                   width: MediaQuery.of(context).size.width,
-  //                   height: 140,
-  //                   decoration: BoxDecoration(
-  //                       color: Colors.amber,
-  //                       borderRadius: BorderRadius.circular(15),
-  //                       image: DecorationImage(
-  //                           image: AssetImage(catalogueData[index]))),
-  //                 ),
-  //                 Container(
-  //                   decoration: BoxDecoration(
-  //                     borderRadius: BorderRadius.circular(15),
-  //                     gradient: LinearGradient(colors: [
-  //                       Color.fromARGB(94, 125, 90, 152),
-  //                       Color.fromARGB(172, 60, 46, 72),
-  //                     ]),
-  //                   ),
-  //                   child: Center(
-  //                     child: Text(
-  //                       catalogueData[index + 7],
-  //                       style: TextStyle(
-  //                           color: Color.fromARGB(255, 255, 255, 255),
-  //                           fontSize: 18,
-  //                           fontWeight: FontWeight.bold),
-  //                     ),
-  //                   ),
-  //                 )
-  //               ]),
-  //               Row(
-  //                 mainAxisAlignment: MainAxisAlignment.start,
-  //                 children: [
-  //                   IconButton(
-  //                       padding: EdgeInsets.all(0),
-  //                       constraints: BoxConstraints(),
-  //                       onPressed: () {},
-  //                       icon: Icon(Icons.star_outline, size: 15)),
-  //                   IconButton(
-  //                       padding: EdgeInsets.all(0),
-  //                       constraints: BoxConstraints(),
-  //                       onPressed: () {},
-  //                       icon: Icon(Icons.star_outline, size: 15)),
-  //                   IconButton(
-  //                       padding: EdgeInsets.all(0),
-  //                       constraints: BoxConstraints(),
-  //                       onPressed: () {},
-  //                       icon: Icon(Icons.star_outline, size: 15)),
-  //                   IconButton(
-  //                       padding: EdgeInsets.all(0),
-  //                       constraints: BoxConstraints(),
-  //                       onPressed: () {},
-  //                       icon: Icon(Icons.star_outline, size: 15)),
-  //                 ],
-  //               )
-  //             ],
-  //           ),
-  //         ),
-  //       );
-  //     },
-  //   );
-  // }
-
-  List<Widget> createCatalogue() {
+  Widget createFeaturedItems() {
     List<Widget> catalogues = [];
-    List<String> catalogueData = [
+    List<String> featuredData = [
       './images/1.png',
       './images/2.png',
       './images/3.png',
@@ -382,13 +189,165 @@ class _HomeScreenState extends State<HomeScreen> {
       'whats'
     ];
 
+    return GridView.builder(
+      itemCount: featuredData.length,
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          mainAxisSpacing: 60, crossAxisCount: 2),
+      itemBuilder: (context, index) {
+        return Padding(
+          padding: const EdgeInsets.only(left: 20.0),
+          child: Stack(
+            children: [
+              Container(
+                width: 140,
+                height: 230,
+                decoration:
+                    BoxDecoration(borderRadius: BorderRadius.circular(15)),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Stack(children: [
+                      Container(
+                        width: MediaQuery.of(context).size.width,
+                        height: 150,
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(15),
+                            image: DecorationImage(
+                                image: AssetImage(featuredData[index]))),
+                      ),
+                      Positioned(
+                        top: 15,
+                        child: Container(
+                          width: 50,
+                          height: 25,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.only(
+                                  topRight: Radius.circular(20),
+                                  bottomRight: Radius.circular(20)),
+                              color: Color.fromARGB(195, 244, 67, 54)),
+                          child: Center(
+                            child: Text(
+                              "50% off",
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 10,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ]),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        IconButton(
+                            padding: EdgeInsets.all(0),
+                            constraints: BoxConstraints(),
+                            onPressed: () {},
+                            icon: Icon(Icons.star_outline, size: 15)),
+                        IconButton(
+                            padding: EdgeInsets.all(0),
+                            constraints: BoxConstraints(),
+                            onPressed: () {},
+                            icon: Icon(Icons.star_outline, size: 15)),
+                        IconButton(
+                            padding: EdgeInsets.all(0),
+                            constraints: BoxConstraints(),
+                            onPressed: () {},
+                            icon: Icon(Icons.star_outline, size: 15)),
+                        IconButton(
+                            padding: EdgeInsets.all(0),
+                            constraints: BoxConstraints(),
+                            onPressed: () {},
+                            icon: Icon(Icons.star_outline, size: 15)),
+                      ],
+                    ),
+                    Container(
+                        margin: EdgeInsets.only(left: 10, right: 10),
+                        width: 130,
+                        height: 30,
+                        child: Text(
+                            "A quick brown clever fox jumps over the lazy dog",
+                            style: TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.w500,
+                                overflow: TextOverflow.fade))),
+                    Container(
+                        margin: EdgeInsets.only(left: 10, right: 10),
+                        width: 130,
+                        child: Text("\$120.00",
+                            style: TextStyle(
+                                fontSize: 16, fontWeight: FontWeight.w800))),
+                  ],
+                ),
+              ),
+              Positioned(
+                right: 30,
+                top: 130,
+                child: Container(
+                  width: 35,
+                  height: 35,
+                  decoration: BoxDecoration(
+                      boxShadow: [
+                        BoxShadow(
+                            color: Color.fromARGB(255, 202, 202, 202),
+                            blurRadius: 4,
+                            spreadRadius: 1.2)
+                      ],
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(20)),
+                  child: IconButton(
+                      color: likePressed
+                          ? Color.fromARGB(255, 255, 210, 77)
+                          : Color.fromARGB(255, 87, 87, 87),
+                      onPressed: () {
+                        setState(() {
+                          if (likePressed == true) {
+                            likePressed = false;
+                          } else {
+                            likePressed = true;
+                          }
+                        });
+                      },
+                      icon: likePressed
+                          ? ImageIcon(AssetImage("./images/heartfill.png"))
+                          : ImageIcon(AssetImage("./images/heart.png"))),
+                ),
+              )
+            ],
+          ),
+        );
+      },
+    );
+  }
+
+  List<Widget> createCatalogue() {
+    List<Widget> catalogues = [];
+    List<String> catalogueData = [
+      './images/1.png',
+      './images/2.png',
+      './images/3.png',
+      './images/4.png',
+      './images/5.png',
+      './images/6.png',
+      './images/7.png',
+      'Cloths',
+      'Jackets',
+      'Shirts',
+      'T-Shirts',
+      'Leather',
+      "Shoes",
+      'whats'
+    ];
+
     int i = 0;
 
     while (i < 6) {
       Padding catalogue = Padding(
         padding: const EdgeInsets.only(left: 12.0),
         child: Container(
-          width: 180,
+          width: 100,
           height: 200,
           decoration: BoxDecoration(borderRadius: BorderRadius.circular(15)),
           child: Stack(children: [
