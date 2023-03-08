@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Ecommerce App',
-      home: HomeScreen(),
+      home: VerificationScreen(),
     );
   }
 }
