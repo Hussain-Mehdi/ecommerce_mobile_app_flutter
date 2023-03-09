@@ -18,3 +18,7 @@ samples, guidance on mobile development, and a full API reference.
  <h2>Ecommerce App</h2>
  <img src="images/dashboard.png" width="350" title="hover text">
  <img src="images/signnin.png" width="350" alt="accessibility text">
+ 
+ 
+ <img src="images/verification.png" width="350" title="hover text">
+ <img src="images/home.png" width="350" alt="accessibility text">
