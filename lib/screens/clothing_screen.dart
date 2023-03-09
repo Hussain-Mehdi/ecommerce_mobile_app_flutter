@@ -1,14 +1,14 @@
 import 'package:ecommerce_mobile_app_flutter/screens/catalogue_screen.dart';
 import 'package:flutter/material.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+class ClothingScreen extends StatefulWidget {
+  const ClothingScreen({super.key});
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<ClothingScreen> createState() => _ClothingScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _ClothingScreenState extends State<ClothingScreen> {
   bool likePressed = false;
 
   @override
@@ -40,10 +40,11 @@ class _HomeScreenState extends State<HomeScreen> {
                         IconButton(
                             onPressed: () {},
                             icon: Icon(
-                              Icons.menu_outlined,
+                              Icons.arrow_back,
                               color: Colors.white,
+                              size: 20,
                             )),
-                        Text("MyShop",
+                        Text("Clothings",
                             style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 18,
@@ -51,9 +52,10 @@ class _HomeScreenState extends State<HomeScreen> {
                         IconButton(
                             onPressed: () {},
                             icon: Icon(
-                              Icons.notifications_outlined,
+                              Icons.filter,
                               color: Colors.white,
-                            ))
+                              size: 20,
+                            )),
                       ],
                     ),
                   ),
@@ -90,98 +92,79 @@ class _HomeScreenState extends State<HomeScreen> {
               ],
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.only(left: 15.0, right: 15),
-            child: Container(
-              child: Stack(
-                children: [
-                  Container(
-                    height: 80,
-                    width: MediaQuery.of(context).size.width,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: Colors.black45,
-                        image: DecorationImage(
-                            fit: BoxFit.cover,
-                            image: AssetImage("./images/cloths.jpg"))),
-                  ),
-                  Container(
-                    height: 80,
-                    width: MediaQuery.of(context).size.width,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(12),
-                        gradient: LinearGradient(colors: [
-                          Color.fromARGB(158, 60, 46, 72),
-                          Color.fromARGB(75, 125, 90, 152),
-                        ])),
-                    child: Padding(
-                      padding: const EdgeInsets.only(top: 18.0, left: 30),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text("Fashion Sale",
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.bold)),
-                          InkWell(
-                            child: Text(
-                              "See more >",
-                              style: TextStyle(
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w600,
-                                  color: Color.fromARGB(255, 223, 167, 1)),
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                  )
-                ],
+          Container(
+            height: 45,
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: ListView(
+                scrollDirection: Axis.horizontal,
+                children: createRecommends(),
               ),
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(
-                left: 15.0, top: 20, bottom: 10, right: 15),
+            padding: const EdgeInsets.only(top: 20, left: 20.0, right: 20.0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  "Catalogue",
+                  "109 Items",
                   style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 18,
-                      color: Colors.black87),
+                      fontSize: 16,
+                      fontWeight: FontWeight.w800,
+                      color: Color.fromARGB(204, 0, 0, 0)),
                 ),
                 Text(
-                  "See all",
+                  "Sort by",
                   style: TextStyle(
-                      fontWeight: FontWeight.w500,
                       fontSize: 12,
-                      color: Color.fromARGB(221, 109, 109, 109)),
-                ),
+                      fontWeight: FontWeight.w500,
+                      color: Color.fromARGB(172, 0, 0, 0)),
+                )
               ],
-            ),
-          ),
-          Container(
-            height: 100,
-            child: ListView(
-                scrollDirection: Axis.horizontal, children: createCatalogue()),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(left: 15.0, top: 20, bottom: 10),
-            child: Text(
-              "Featured",
-              style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 18,
-                  color: Colors.black87),
             ),
           ),
           Expanded(child: Container(child: createFeaturedItems()))
         ]));
+  }
+
+  List<Widget> createRecommends() {
+    List<Widget> recommends = [];
+    int activeOne = 0;
+    List<String> recommendData = [
+      'All',
+      'Dresses',
+      'Tops',
+      'Sweaters',
+      'Jeans',
+      'Watches',
+      'Caps',
+      'Shorts',
+    ];
+    int i = 0;
+    while (i < 8) {
+      Padding chip = Padding(
+        padding: EdgeInsets.only(left: 10),
+        child: Container(
+          width: 70,
+          decoration: BoxDecoration(
+              color: activeOne == i ? Colors.amber : Colors.white,
+              borderRadius: BorderRadius.circular(30)),
+          child: Center(
+              child: Text(
+            recommendData[i],
+            style: TextStyle(
+                fontSize: 12,
+                fontWeight: FontWeight.w500,
+                color: Color.fromARGB(204, 0, 0, 0)),
+          )),
+        ),
+      );
+
+      recommends.add(chip);
+      i++;
+    }
+    return recommends;
   }
 
   Widget createFeaturedItems() {
