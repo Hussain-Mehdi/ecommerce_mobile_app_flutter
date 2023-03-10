@@ -30,3 +30,4 @@ samples, guidance on mobile development, and a full API reference.
  <img src="images/catagory.png" width="230" title="hover text">
  </p>
 
+ <img src="images/setting.png" width="230" title="hover text">
