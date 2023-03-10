@@ -16,9 +16,17 @@ For help getting started with Flutter development, view the
 samples, guidance on mobile development, and a full API reference.
 
  <h2>Ecommerce App</h2>
- <img src="images/dashboard.png" width="350" title="hover text">
- <img src="images/signnin.png" width="350" alt="accessibility text">
+ <p>
+ <img src="images/dashboard.png" width="230" /> 
+ <img src="images/signnin.png" width="230" />
+ <img src="images/verification.png" width="230" title="hover text">
+ <img src="images/home.png" width="230" title="hover text">
+ </p>
  
- 
- <img src="images/verification.png" width="350" title="hover text">
- <img src="images/home.png" width="350" alt="accessibility text">
+ <p>
+ <img src="images/mens.png" width="230" /> 
+ <img src="images/filter1.png" width="230" />
+ <img src="images/clothdetail.png" width="230" title="hover text">
+ <img src="images/catagory.png" width="230" title="hover text">
+ </p>
+
