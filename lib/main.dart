@@ -4,6 +4,7 @@ import 'screens/clothing_screen.dart';
 import 'screens/dashboard_screen.dart';
 import 'screens/filter_screen.dart';
 import 'screens/home_screen.dart';
+import 'screens/productdetail_screen.dart';
 import 'screens/signin_screen.dart';
 import 'screens/verification_screen.dart';
 
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Ecommerce App',
-      home: FilterScreen(),
+      home: ProductDetail(),
     );
   }
 }
