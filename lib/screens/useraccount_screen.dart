@@ -68,13 +68,24 @@ class UserAccountScreen extends StatelessWidget {
                     radius: 35,
                     backgroundImage: AssetImage('./images/pot1.jpg'),
                   ),
-                )
+                ),
+                Positioned(
+                    top: 90,
+                    left: 300,
+                    child: Container(
+                      height: 40,
+                      width: 40,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          color: Colors.white),
+                      child: Icon(
+                        Icons.edit_outlined,
+                      ),
+                    )),
               ],
             ),
           ),
-          Container(
-            child: Column(children: createUserProfile()),
-          )
+          Column(children: createUserProfile())
         ],
       ),
     );
