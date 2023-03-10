@@ -6,6 +6,7 @@ import 'screens/filter_screen.dart';
 import 'screens/home_screen.dart';
 import 'screens/productdetail_screen.dart';
 import 'screens/signin_screen.dart';
+import 'screens/useraccount_screen.dart';
 import 'screens/verification_screen.dart';
 
 void main() {
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Ecommerce App',
-      home: CatalogueScreen(),
+      home: UserAccountScreen(),
     );
   }
 }
