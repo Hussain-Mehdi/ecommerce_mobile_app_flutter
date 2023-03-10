@@ -205,26 +205,26 @@ class _ClothingScreenState extends State<ClothingScreen> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  IconButton(
-                      padding: EdgeInsets.all(0),
-                      constraints: BoxConstraints(),
-                      onPressed: () {},
-                      icon: Icon(Icons.star_outline, size: 15)),
-                  IconButton(
-                      padding: EdgeInsets.all(0),
-                      constraints: BoxConstraints(),
-                      onPressed: () {},
-                      icon: Icon(Icons.star_outline, size: 15)),
-                  IconButton(
-                      padding: EdgeInsets.all(0),
-                      constraints: BoxConstraints(),
-                      onPressed: () {},
-                      icon: Icon(Icons.star_outline, size: 15)),
-                  IconButton(
-                      padding: EdgeInsets.all(0),
-                      constraints: BoxConstraints(),
-                      onPressed: () {},
-                      icon: Icon(Icons.star_outline, size: 15)),
+                  Icon(
+                    Icons.star,
+                    color: Colors.red,
+                    size: 15,
+                  ),
+                  Icon(
+                    Icons.star,
+                    color: Colors.red,
+                    size: 15,
+                  ),
+                  Icon(
+                    Icons.star,
+                    color: Colors.red,
+                    size: 15,
+                  ),
+                  Icon(
+                    Icons.star,
+                    color: Colors.red,
+                    size: 15,
+                  ),
                 ],
               ),
               Container(

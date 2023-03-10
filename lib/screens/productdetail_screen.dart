@@ -51,18 +51,26 @@ class ProductDetail extends StatelessWidget {
                         size: 20,
                         color: Colors.red,
                       ),
-                      Text("8 Reviews"),
+                      Text("8 Reviews",
+                          style: TextStyle(
+                              color: Color.fromARGB(181, 0, 0, 0),
+                              fontSize: 12,
+                              fontWeight: FontWeight.w400)),
                     ],
                   ),
                 ),
-                Text("34 Stock"),
+                Text("34 Stock",
+                    style: TextStyle(
+                        color: Colors.green,
+                        fontSize: 12,
+                        fontWeight: FontWeight.w600)),
               ],
             ),
           ),
           Padding(
-            padding: const EdgeInsets.fromLTRB(10, 0, 10, 10),
+            padding: const EdgeInsets.fromLTRB(10, 0, 40, 10),
             child: Text(
-              "A quick brown clever fox jumps over the lazy dog",
+              "Astylish T-Shirt with open neck dual color and front logo",
               style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.w700,
@@ -72,7 +80,7 @@ class ProductDetail extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.fromLTRB(10, 0, 10, 10),
             child: Text(
-              "\$800",
+              "\$120.00",
               style: TextStyle(
                   fontSize: 25,
                   fontWeight: FontWeight.w900,

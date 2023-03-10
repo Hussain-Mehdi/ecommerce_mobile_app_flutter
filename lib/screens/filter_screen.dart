@@ -9,14 +9,6 @@ class FilterScreenState extends State<FilterScreen> {
   @override
   double start = 30;
   double end = 50;
-  List<DropdownMenuItem> dropDownItems = [
-    DropdownMenuItem(child: Text("Jeans")),
-    DropdownMenuItem(child: Text("Shirts")),
-    DropdownMenuItem(child: Text("T-Shirts")),
-    DropdownMenuItem(child: Text("Tops")),
-    DropdownMenuItem(child: Text("Caps")),
-    DropdownMenuItem(child: Text("Jackets")),
-  ];
 
   int selectedValue = 0;
   Widget build(BuildContext context) {
@@ -65,7 +57,7 @@ class FilterScreenState extends State<FilterScreen> {
               ),
             ])),
         Padding(
-          padding: const EdgeInsets.only(left: 20.0, top: 30),
+          padding: const EdgeInsets.only(left: 20.0, top: 20),
           child: Text(
             "Catagory",
             style: TextStyle(
@@ -125,7 +117,7 @@ class FilterScreenState extends State<FilterScreen> {
           ),
         ),
         Padding(
-          padding: const EdgeInsets.only(left: 20.0, top: 30),
+          padding: const EdgeInsets.only(left: 20.0, top: 20),
           child: Text(
             "Catagory",
             style: TextStyle(
@@ -163,9 +155,81 @@ class FilterScreenState extends State<FilterScreen> {
           ),
         ),
         Padding(
-          padding: const EdgeInsets.only(left: 20.0, top: 30),
+          padding: const EdgeInsets.only(left: 20.0, top: 20),
           child: Text(
             "Brands",
+            style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+                color: Colors.black87),
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.only(left: 20.0, right: 20, top: 10),
+          child: DropdownButtonFormField(
+            decoration: InputDecoration(
+                filled: true,
+                fillColor: Colors.white,
+                enabledBorder:
+                    UnderlineInputBorder(borderSide: BorderSide.none),
+                focusedBorder:
+                    UnderlineInputBorder(borderSide: BorderSide.none)),
+            items: <String>[
+              "Hendrix",
+              "Foreign Falcon",
+              "Jim & Jago",
+              "Jelly Kelly",
+              "Modern Walk",
+              "Apparel 360",
+            ].map((String value) {
+              return DropdownMenuItem(
+                child: Text(value),
+                value: value,
+              );
+            }).toList(),
+            onChanged: (value) {},
+            hint: Text(selectedValue.toString()),
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.only(left: 20.0, top: 20),
+          child: Text(
+            "Colors",
+            style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+                color: Colors.black87),
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.only(left: 20.0, right: 20, top: 0),
+          child: Container(
+              width: MediaQuery.of(context).size.width,
+              child: Row(children: createColors())),
+        ),
+        Padding(
+          padding: const EdgeInsets.only(left: 20.0, top: 10),
+          child: Text(
+            "Size",
+            style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+                color: Colors.black87),
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.only(left: 10, right: 20, top: 10),
+          child: Container(
+              height: 60,
+              child: ListView(
+                  scrollDirection: Axis.horizontal,
+                  padding: EdgeInsets.zero,
+                  children: createSize())),
+        ),
+        Padding(
+          padding: const EdgeInsets.only(left: 20.0, top: 0),
+          child: Text(
+            "Catagory",
             style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
@@ -200,41 +264,21 @@ class FilterScreenState extends State<FilterScreen> {
             hint: Text(selectedValue.toString()),
           ),
         ),
-        Padding(
-          padding: const EdgeInsets.only(left: 20.0, top: 30),
-          child: Text(
-            "Colors",
-            style: TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.bold,
-                color: Colors.black87),
+        Container(
+          margin: EdgeInsets.only(left: 20, top: 10, right: 20),
+          height: 50,
+          decoration: BoxDecoration(
+              color: Colors.amber, borderRadius: BorderRadius.circular(12)),
+          child: Center(
+            child: Text(
+              "Results",
+              style: TextStyle(
+                  fontWeight: FontWeight.w700,
+                  fontSize: 16,
+                  color: Colors.white),
+            ),
           ),
-        ),
-        Padding(
-          padding: const EdgeInsets.all(20.0),
-          child: Container(
-              width: MediaQuery.of(context).size.width,
-              child: Row(children: createColors())),
-        ),
-        Padding(
-          padding: const EdgeInsets.only(left: 20.0, top: 20),
-          child: Text(
-            "Size",
-            style: TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.bold,
-                color: Colors.black87),
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.all(20.0),
-          child: Container(
-              height: 60,
-              child: ListView(
-                  scrollDirection: Axis.horizontal,
-                  padding: EdgeInsets.zero,
-                  children: createSize())),
-        ),
+        )
       ],
     ));
   }

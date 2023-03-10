@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Ecommerce App',
-      home: ProductDetail(),
+      home: CatalogueScreen(),
     );
   }
 }
