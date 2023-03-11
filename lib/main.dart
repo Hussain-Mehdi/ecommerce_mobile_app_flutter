@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'screens/cart_screen.dart';
 import 'screens/catalogue_screen.dart';
+import 'screens/checkout_screen.dart';
 import 'screens/clothing_screen.dart';
 import 'screens/dashboard_screen.dart';
 import 'screens/filter_screen.dart';
@@ -22,7 +23,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Ecommerce App',
-      home: CartScreen(),
+      home: CheckoutScreen(),
     );
   }
 }

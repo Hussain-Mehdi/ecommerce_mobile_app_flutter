@@ -7,10 +7,6 @@ class CartScreen extends StatefulWidget {
 
 class CartScreenState extends State<CartScreen> {
   @override
-  double start = 30;
-  double end = 50;
-
-  int selectedValue = 0;
   Widget build(BuildContext context) {
     return Material(
         child: Column(
