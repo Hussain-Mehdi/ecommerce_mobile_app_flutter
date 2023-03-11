@@ -29,5 +29,12 @@ samples, guidance on mobile development, and a full API reference.
  <img src="images/clothdetail.png" width="230" title="hover text">
  <img src="images/catagory.png" width="230" title="hover text">
  </p>
-
+ 
+  <p>
  <img src="images/setting.png" width="230" title="hover text">
+ <img src="images/cart.png" width="230" />
+ <img src="images/checkout.png" width="230" title="hover text">
+
+ </p>
+
+
