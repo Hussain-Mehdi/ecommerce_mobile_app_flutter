@@ -161,7 +161,7 @@ class CartScreenState extends State<CartScreen> {
                     InkWell(
                       onTap: () {},
                       child: Icon(
-                        Icons.add_circle_outline,
+                        Icons.remove_circle_outline,
                         size: 18,
                       ),
                     ),
