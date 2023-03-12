@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../models/product_model.dart';
+
 class CartScreen extends StatefulWidget {
   @override
   State<CartScreen> createState() => CartScreenState();
@@ -7,6 +9,7 @@ class CartScreen extends StatefulWidget {
 
 class CartScreenState extends State<CartScreen> {
   @override
+  int quantity = 0;
   Widget build(BuildContext context) {
     return Material(
         child: Column(
@@ -65,28 +68,6 @@ class CartScreenState extends State<CartScreen> {
 
   List<Widget> createCatalogueList() {
     List<Widget> catalogueCards = [];
-    List<String> catalogueData = [
-      './images/1.png',
-      './images/2.png',
-      './images/3.png',
-      './images/4.png',
-      './images/5.png',
-      './images/6.png',
-      './images/7.png',
-      'Cloths',
-      'Jacket',
-      'Dress Shirt',
-      'T-Shirt',
-      'Top',
-      "Shoes",
-      'Formal Boot',
-      "Hendrix",
-      "Foreign Falcon",
-      "Jim & Jago",
-      "Jelly Kelly",
-      "Modern Walk",
-      "Apparel 360",
-    ];
 
     int i = 0;
     while (i < 7) {
@@ -112,8 +93,8 @@ class CartScreenState extends State<CartScreen> {
                       borderRadius: BorderRadius.only(
                           topRight: Radius.circular(10),
                           bottomRight: Radius.circular(10)),
-                      image:
-                          DecorationImage(image: AssetImage(catalogueData[i]))),
+                      image: DecorationImage(
+                          image: AssetImage(products()[i].productImage))),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(left: 0.0, top: 10),
@@ -123,21 +104,21 @@ class CartScreenState extends State<CartScreen> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          catalogueData[i + 7],
+                          products()[i].productName,
                           style: TextStyle(
                               fontSize: 16,
                               fontWeight: FontWeight.bold,
                               color: Color.fromARGB(228, 56, 56, 56)),
                         ),
+                        // Text(
+                        //   catalogueData[i + 13],
+                        //   style: TextStyle(
+                        //       fontSize: 12,
+                        //       fontWeight: FontWeight.w700,
+                        //       color: Color.fromARGB(255, 56, 56, 56)),
+                        // ),
                         Text(
-                          catalogueData[i + 13],
-                          style: TextStyle(
-                              fontSize: 12,
-                              fontWeight: FontWeight.w700,
-                              color: Color.fromARGB(255, 56, 56, 56)),
-                        ),
-                        Text(
-                          'Purchase the good product with fair prices',
+                          products()[i].productDescription,
                           style: TextStyle(
                               fontSize: 12,
                               fontWeight: FontWeight.w400,
@@ -151,15 +132,23 @@ class CartScreenState extends State<CartScreen> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     InkWell(
-                      onTap: () {},
+                      onTap: () {
+                        setState(() {
+                          quantity++;
+                        });
+                      },
                       child: Icon(
                         Icons.add_circle_outline,
                         size: 18,
                       ),
                     ),
-                    Text("2"),
+                    Text(quantity.toString()),
                     InkWell(
-                      onTap: () {},
+                      onTap: () {
+                        setState(() {
+                          quantity--;
+                        });
+                      },
                       child: Icon(
                         Icons.remove_circle_outline,
                         size: 18,
