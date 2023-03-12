@@ -3,8 +3,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 
-class ProductDetail extends StatelessWidget {
-  const ProductDetail({super.key});
+import '../models/product_model.dart';
+
+class ProductDetail extends StatefulWidget {
+  ProductDetail(this.productID);
+  int productID;
+
+  @override
+  State<ProductDetail> createState() => _ProductDetailState();
+}
+
+class _ProductDetailState extends State<ProductDetail> {
+  bool liked = false;
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +30,9 @@ class ProductDetail extends StatelessWidget {
             child: Container(
               height: 350,
               decoration: BoxDecoration(
-                  image: DecorationImage(image: AssetImage("./images/4.png"))),
+                  image: DecorationImage(
+                      image: AssetImage(
+                          products()[widget.productID].productImage))),
             ),
           ),
           Padding(
@@ -70,7 +82,7 @@ class ProductDetail extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.fromLTRB(10, 0, 40, 10),
             child: Text(
-              "Astylish T-Shirt with open neck dual color and front logo",
+              products()[widget.productID].productDescription,
               style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.w700,
@@ -80,7 +92,7 @@ class ProductDetail extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.fromLTRB(10, 0, 10, 10),
             child: Text(
-              "\$120.00",
+              "\$${products()[widget.productID].productPrice}",
               style: TextStyle(
                   fontSize: 25,
                   fontWeight: FontWeight.w900,
@@ -127,26 +139,45 @@ class ProductDetail extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                IconButton(onPressed: () {}, icon: Icon(Icons.arrow_back)),
-                Container(
-                  height: 50,
-                  width: 150,
-                  decoration: BoxDecoration(
-                      color: Colors.amber,
-                      borderRadius: BorderRadius.circular(10)),
-                  child: Center(
-                    child: Text(
-                      "Add to Cart",
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 16),
+                IconButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    icon: Icon(Icons.arrow_back)),
+                InkWell(
+                  onTap: () {
+                    addtoCart().add(products()[widget.productID]);
+                  },
+                  child: Container(
+                    height: 50,
+                    width: 150,
+                    decoration: BoxDecoration(
+                        color: Colors.amber,
+                        borderRadius: BorderRadius.circular(10)),
+                    child: Center(
+                      child: Text(
+                        "Add to Cart",
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16),
+                      ),
                     ),
                   ),
                 ),
                 IconButton(
-                    onPressed: () {},
-                    icon: ImageIcon(AssetImage("./images/heart.png"))),
+                    onPressed: () {
+                      setState(() {
+                        if (liked) {
+                          liked = false;
+                        } else {
+                          liked = true;
+                        }
+                      });
+                    },
+                    icon: liked
+                        ? ImageIcon(AssetImage("./images/heartfill.png"))
+                        : ImageIcon(AssetImage("./images/heart.png"))),
               ],
             ),
           )

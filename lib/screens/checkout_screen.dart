@@ -29,7 +29,9 @@ class CheckoutScreenState extends State<CheckoutScreen> {
                   child: Row(
                     children: [
                       IconButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
                           icon: Icon(
                             Icons.arrow_back,
                             color: Colors.white,

@@ -1,3 +1,4 @@
+import 'package:ecommerce_mobile_app_flutter/screens/checkout_screen.dart';
 import 'package:flutter/material.dart';
 
 class UserAccountScreen extends StatelessWidget {
@@ -85,13 +86,13 @@ class UserAccountScreen extends StatelessWidget {
               ],
             ),
           ),
-          Column(children: createUserProfile())
+          Column(children: createUserProfile(context))
         ],
       ),
     );
   }
 
-  List<Widget> createUserProfile() {
+  List<Widget> createUserProfile(BuildContext context) {
     List<Widget> userProfile = [];
     List<String> profileData = [
       'Shopping Address',
@@ -117,34 +118,39 @@ class UserAccountScreen extends StatelessWidget {
     while (i < 6) {
       Padding profileTile = Padding(
         padding: const EdgeInsets.all(8.0),
-        child: Container(
-          height: 60,
-          width: 320,
-          decoration: BoxDecoration(boxShadow: [
-            BoxShadow(
-                color: Color.fromARGB(31, 99, 99, 99),
-                blurRadius: 1,
-                spreadRadius: 1)
-          ], borderRadius: BorderRadius.circular(10), color: Colors.white),
-          child: Center(
-              child: Padding(
-            padding: const EdgeInsets.only(left: 20.0),
-            child: Row(
-              children: [
-                settingIcons[i],
-                Padding(
-                  padding: const EdgeInsets.only(left: 10.0),
-                  child: Text(
-                    profileData[i],
-                    style: TextStyle(
-                        color: Color.fromARGB(179, 0, 0, 0),
-                        fontSize: 12,
-                        fontWeight: FontWeight.w500),
+        child: InkWell(
+          onTap: () {
+            changeRoute(context, i);
+          },
+          child: Container(
+            height: 60,
+            width: 320,
+            decoration: BoxDecoration(boxShadow: [
+              BoxShadow(
+                  color: Color.fromARGB(31, 99, 99, 99),
+                  blurRadius: 1,
+                  spreadRadius: 1)
+            ], borderRadius: BorderRadius.circular(10), color: Colors.white),
+            child: Center(
+                child: Padding(
+              padding: const EdgeInsets.only(left: 20.0),
+              child: Row(
+                children: [
+                  settingIcons[i],
+                  Padding(
+                    padding: const EdgeInsets.only(left: 10.0),
+                    child: Text(
+                      profileData[i],
+                      style: TextStyle(
+                          color: Color.fromARGB(179, 0, 0, 0),
+                          fontSize: 12,
+                          fontWeight: FontWeight.w500),
+                    ),
                   ),
-                ),
-              ],
-            ),
-          )),
+                ],
+              ),
+            )),
+          ),
         ),
       );
 
@@ -153,4 +159,30 @@ class UserAccountScreen extends StatelessWidget {
     }
     return userProfile;
   }
+}
+
+void changeRoute(BuildContext context, int route) {
+  String path = route.toString();
+  print("=====================>${route}");
+  switch (route) {
+    case 1:
+      path = "CheckoutScreen()";
+      break;
+    case 2:
+      path = "CheckoutScreen()";
+      break;
+    case 3:
+      path = "CheckoutScreen()";
+      break;
+    case 6:
+      path = "CheckoutScreen()";
+      break;
+    default:
+  }
+
+  Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => CheckoutScreen(),
+      ));
 }

@@ -36,3 +36,8 @@ List<ProductModel> products() {
 
   return productList;
 }
+
+List<ProductModel> addtoCart() {
+  List<ProductModel> carted = [];
+  return carted;
+}

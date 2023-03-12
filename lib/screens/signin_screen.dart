@@ -1,7 +1,11 @@
+import 'package:ecommerce_mobile_app_flutter/screens/home_screen.dart';
+import 'package:ecommerce_mobile_app_flutter/screens/verification_screen.dart';
 import 'package:flutter/material.dart';
 
 class SignInScreen extends StatelessWidget {
-  const SignInScreen({super.key});
+  SignInScreen({super.key});
+
+  TextEditingController verificationCode = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -58,6 +62,7 @@ class SignInScreen extends StatelessWidget {
                   height: 55,
                   width: 310,
                   child: TextField(
+                    controller: verificationCode,
                     keyboardType: TextInputType.number,
                     decoration: InputDecoration(
                         hintText: "Enter Phone number",
@@ -67,19 +72,54 @@ class SignInScreen extends StatelessWidget {
                             borderRadius: BorderRadius.circular(10))),
                   ),
                 )),
-            Container(
-              margin: EdgeInsets.only(top: 380, left: 25),
-              height: 60,
-              width: 310,
-              decoration: BoxDecoration(
-                  color: Colors.amber, borderRadius: BorderRadius.circular(10)),
-              child: Center(
-                child: Text(
-                  "Get Started",
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
+            InkWell(
+              onTap: () {
+                if (verificationCode.text.isEmpty) {
+                  showDialog(
+                    context: context,
+                    builder: (context) {
+                      return AlertDialog(
+                        actionsPadding: EdgeInsets.zero,
+                        content: Text("Please enter verification code"),
+                        actions: [
+                          TextButton(
+                              onPressed: () {
+                                Navigator.pop(context);
+                              },
+                              child: Text(
+                                "Ok",
+                                style: TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.w700),
+                              ))
+                        ],
+                      );
+                    },
+                  );
+                } else {
+                  Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => VerificationScreen(),
+                      ));
+                }
+              },
+              child: Container(
+                margin: EdgeInsets.only(top: 380, left: 25),
+                height: 60,
+                width: 310,
+                decoration: BoxDecoration(
+                    color: Colors.amber,
+                    borderRadius: BorderRadius.circular(10)),
+                child: Center(
+                  child: Text(
+                    "Send Verification Code",
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
                   ),
                 ),
               ),
@@ -87,7 +127,13 @@ class SignInScreen extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(top: 450.0, left: 150),
               child: TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => HomeScreen(),
+                        ));
+                  },
                   child: Text(
                     "Skip",
                     style: TextStyle(

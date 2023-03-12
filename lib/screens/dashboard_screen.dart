@@ -1,3 +1,4 @@
+import 'package:ecommerce_mobile_app_flutter/screens/signin_screen.dart';
 import 'package:flutter/material.dart';
 
 class DashboardScreen extends StatelessWidget {
@@ -86,20 +87,29 @@ class DashboardScreen extends StatelessWidget {
                         ),
                       ),
                     ),
-                    Container(
-                      margin: EdgeInsets.only(top: 20),
-                      height: 50,
-                      width: 250,
-                      decoration: BoxDecoration(
-                          color: Colors.amber,
-                          borderRadius: BorderRadius.circular(10)),
-                      child: Center(
-                        child: Text(
-                          "Get Started",
-                          style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white,
+                    InkWell(
+                      onTap: () {
+                        Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => SignInScreen(),
+                            ));
+                      },
+                      child: Container(
+                        margin: EdgeInsets.only(top: 20),
+                        height: 50,
+                        width: 250,
+                        decoration: BoxDecoration(
+                            color: Colors.amber,
+                            borderRadius: BorderRadius.circular(10)),
+                        child: Center(
+                          child: Text(
+                            "Get Started",
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white,
+                            ),
                           ),
                         ),
                       ),

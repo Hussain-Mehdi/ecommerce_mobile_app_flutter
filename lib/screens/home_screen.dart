@@ -1,5 +1,8 @@
 import 'package:ecommerce_mobile_app_flutter/screens/catalogue_screen.dart';
+import 'package:ecommerce_mobile_app_flutter/screens/productdetail_screen.dart';
 import 'package:flutter/material.dart';
+
+import '../models/product_model.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -186,25 +189,9 @@ class _HomeScreenState extends State<HomeScreen> {
 
   Widget createFeaturedItems() {
     List<Widget> catalogues = [];
-    List<String> featuredData = [
-      './images/1.png',
-      './images/2.png',
-      './images/3.png',
-      './images/4.png',
-      './images/5.png',
-      './images/6.png',
-      './images/7.png',
-      'Cloths',
-      'Shoes',
-      'Watch',
-      'Jackets',
-      'Shites',
-      "Glasses",
-      'whats'
-    ];
 
     return GridView.builder(
-      itemCount: featuredData.length,
+      itemCount: products().length,
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           childAspectRatio: MediaQuery.of(context).size.width /
               (MediaQuery.of(context).size.height / 1),
@@ -215,88 +202,97 @@ class _HomeScreenState extends State<HomeScreen> {
           padding: const EdgeInsets.only(left: 20.0),
           child: Stack(
             children: [
-              Container(
-                width: 140,
-                height: 230,
-                decoration:
-                    BoxDecoration(borderRadius: BorderRadius.circular(15)),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Stack(children: [
-                      Container(
-                        width: MediaQuery.of(context).size.width,
-                        height: 150,
-                        decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(15),
-                            image: DecorationImage(
-                                image: AssetImage(featuredData[index]))),
-                      ),
-                      Positioned(
-                        top: 15,
-                        child: Container(
-                          width: 50,
-                          height: 25,
+              InkWell(
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => ProductDetail(index),
+                      ));
+                },
+                child: Container(
+                  width: 140,
+                  height: 230,
+                  decoration:
+                      BoxDecoration(borderRadius: BorderRadius.circular(15)),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Stack(children: [
+                        Container(
+                          width: MediaQuery.of(context).size.width,
+                          height: 150,
                           decoration: BoxDecoration(
-                              borderRadius: BorderRadius.only(
-                                  topRight: Radius.circular(20),
-                                  bottomRight: Radius.circular(20)),
-                              color: Color.fromARGB(195, 244, 67, 54)),
-                          child: Center(
-                            child: Text(
-                              "50% off",
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 10,
-                                  fontWeight: FontWeight.bold),
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(15),
+                              image: DecorationImage(
+                                  image: AssetImage(
+                                      products()[index].productImage))),
+                        ),
+                        Positioned(
+                          top: 15,
+                          child: Container(
+                            width: 50,
+                            height: 25,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.only(
+                                    topRight: Radius.circular(20),
+                                    bottomRight: Radius.circular(20)),
+                                color: Color.fromARGB(195, 244, 67, 54)),
+                            child: Center(
+                              child: Text(
+                                "50% off",
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 10,
+                                    fontWeight: FontWeight.bold),
+                              ),
                             ),
                           ),
                         ),
+                      ]),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          IconButton(
+                              padding: EdgeInsets.all(0),
+                              constraints: BoxConstraints(),
+                              onPressed: () {},
+                              icon: Icon(Icons.star_outline, size: 15)),
+                          IconButton(
+                              padding: EdgeInsets.all(0),
+                              constraints: BoxConstraints(),
+                              onPressed: () {},
+                              icon: Icon(Icons.star_outline, size: 15)),
+                          IconButton(
+                              padding: EdgeInsets.all(0),
+                              constraints: BoxConstraints(),
+                              onPressed: () {},
+                              icon: Icon(Icons.star_outline, size: 15)),
+                          IconButton(
+                              padding: EdgeInsets.all(0),
+                              constraints: BoxConstraints(),
+                              onPressed: () {},
+                              icon: Icon(Icons.star_outline, size: 15)),
+                        ],
                       ),
-                    ]),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        IconButton(
-                            padding: EdgeInsets.all(0),
-                            constraints: BoxConstraints(),
-                            onPressed: () {},
-                            icon: Icon(Icons.star_outline, size: 15)),
-                        IconButton(
-                            padding: EdgeInsets.all(0),
-                            constraints: BoxConstraints(),
-                            onPressed: () {},
-                            icon: Icon(Icons.star_outline, size: 15)),
-                        IconButton(
-                            padding: EdgeInsets.all(0),
-                            constraints: BoxConstraints(),
-                            onPressed: () {},
-                            icon: Icon(Icons.star_outline, size: 15)),
-                        IconButton(
-                            padding: EdgeInsets.all(0),
-                            constraints: BoxConstraints(),
-                            onPressed: () {},
-                            icon: Icon(Icons.star_outline, size: 15)),
-                      ],
-                    ),
-                    Container(
-                        margin: EdgeInsets.only(left: 10, right: 10),
-                        width: 130,
-                        height: 30,
-                        child: Text(
-                            "A quick brown clever fox jumps over the lazy dog",
-                            style: TextStyle(
-                                fontSize: 12,
-                                fontWeight: FontWeight.w500,
-                                overflow: TextOverflow.fade))),
-                    Container(
-                        margin: EdgeInsets.only(left: 10, right: 10),
-                        width: 130,
-                        child: Text("\$120.00",
-                            style: TextStyle(
-                                fontSize: 16, fontWeight: FontWeight.w800))),
-                  ],
+                      Container(
+                          margin: EdgeInsets.only(left: 10, right: 10),
+                          width: 130,
+                          height: 30,
+                          child: Text(products()[index].productDescription,
+                              style: TextStyle(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w500,
+                                  overflow: TextOverflow.fade))),
+                      Container(
+                          margin: EdgeInsets.only(left: 10, right: 10),
+                          width: 130,
+                          child: Text("\$${products()[index].productPrice}",
+                              style: TextStyle(
+                                  fontSize: 16, fontWeight: FontWeight.w800))),
+                    ],
+                  ),
                 ),
               ),
               Positioned(
